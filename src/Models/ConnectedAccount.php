@@ -27,6 +27,7 @@ class ConnectedAccount extends SocialstreamConnectedAccount
      *
      * @var list<string>
      */
+    #[\Override]
     protected $fillable = [
         'provider',
         'provider_id',
@@ -45,6 +46,7 @@ class ConnectedAccount extends SocialstreamConnectedAccount
      *
      * @var array<string, string>
      */
+    #[\Override]
     protected $casts = [
         'created_at' => 'datetime',
         'expires_at' => 'datetime',
@@ -55,6 +57,7 @@ class ConnectedAccount extends SocialstreamConnectedAccount
      *
      * @var array<string, class-string>
      */
+    #[\Override]
     protected $dispatchesEvents = [
         'created' => ConnectedAccountCreated::class,
         'updated' => ConnectedAccountUpdated::class,

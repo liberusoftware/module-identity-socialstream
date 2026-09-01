@@ -12,6 +12,7 @@ use Liberu\Foundation\Identity\Socialstream\Models\ConnectedAccount;
  */
 class ConnectedAccountFactory extends Factory
 {
+    #[\Override]
     protected $model = ConnectedAccount::class;
 
     public function definition(): array
