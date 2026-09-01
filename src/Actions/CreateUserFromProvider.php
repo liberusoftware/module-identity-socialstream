@@ -13,14 +13,17 @@ use Liberu\Foundation\Organizations\Models\Team;
 class CreateUserFromProvider implements CreatesUserFromProvider
 {
     /**
+     * The creates connected accounts instance.
+     */
+    public CreatesConnectedAccounts $createsConnectedAccounts;
+
+    /**
      * Create a new action instance.
      */
-    public function __construct(
-        /**
-         * The creates connected accounts instance.
-         */
-        public CreatesConnectedAccounts $createsConnectedAccounts
-    ) {}
+    public function __construct(CreatesConnectedAccounts $createsConnectedAccounts)
+    {
+        $this->createsConnectedAccounts = $createsConnectedAccounts;
+    }
 
     /**
      * Create a new user from a social provider user.
@@ -34,7 +37,7 @@ class CreateUserFromProvider implements CreatesUserFromProvider
             return tap($userModel::create([
                 'name' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
-            ]), function (User $user) use ($provider, $providerUser): void {
+            ]), function (User $user) use ($provider, $providerUser) {
                 $user->markEmailAsVerified();
 
                 if (Socialstream::hasProviderAvatarsFeature() && $providerUser->getAvatar()) {

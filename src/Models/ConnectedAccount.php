@@ -27,7 +27,6 @@ class ConnectedAccount extends SocialstreamConnectedAccount
      *
      * @var list<string>
      */
-    #[\Override]
     protected $fillable = [
         'provider',
         'provider_id',
@@ -39,6 +38,9 @@ class ConnectedAccount extends SocialstreamConnectedAccount
         'secret',
         'refresh_token',
         'expires_at',
+        'enable_family_matching',
+        'cached_profile_data',
+        'last_synced_at',
     ];
 
     /**
@@ -46,10 +48,12 @@ class ConnectedAccount extends SocialstreamConnectedAccount
      *
      * @var array<string, string>
      */
-    #[\Override]
     protected $casts = [
         'created_at' => 'datetime',
         'expires_at' => 'datetime',
+        'enable_family_matching' => 'boolean',
+        'cached_profile_data' => 'array',
+        'last_synced_at' => 'datetime',
     ];
 
     /**
@@ -57,7 +61,6 @@ class ConnectedAccount extends SocialstreamConnectedAccount
      *
      * @var array<string, class-string>
      */
-    #[\Override]
     protected $dispatchesEvents = [
         'created' => ConnectedAccountCreated::class,
         'updated' => ConnectedAccountUpdated::class,
