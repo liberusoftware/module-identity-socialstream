@@ -38,9 +38,6 @@ class ConnectedAccount extends SocialstreamConnectedAccount
         'secret',
         'refresh_token',
         'expires_at',
-        'enable_family_matching',
-        'cached_profile_data',
-        'last_synced_at',
     ];
 
     /**
@@ -51,9 +48,6 @@ class ConnectedAccount extends SocialstreamConnectedAccount
     protected $casts = [
         'created_at' => 'datetime',
         'expires_at' => 'datetime',
-        'enable_family_matching' => 'boolean',
-        'cached_profile_data' => 'array',
-        'last_synced_at' => 'datetime',
     ];
 
     /**
