@@ -9,7 +9,7 @@ final class CredentialSerializationSecurityTest extends TestCase
 {
     public function test_credentials_are_hidden_from_array_and_json_output(): void
     {
-        $account = new ConnectedAccount;
+        $account = new ConnectedAccount();
         $account->forceFill(['name' => 'Example', 'token' => 'private-token', 'secret' => 'private-secret', 'refresh_token' => 'private-refresh-token']);
 
         self::assertSame(['name' => 'Example'], $account->toArray());
